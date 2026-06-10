@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "44581000000020001",
+      "name": "NeuroBytes-KSP-OS",
+      "domain": {
+        "id": "50043011885",
+        "name": "neurobytes-ksp-os-60073309380.development"
+      },
+      "timezone": "Asia/Kolkata",
+      "env": [
+        {
+          "idx": 1,
+          "id": "60073309380",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}

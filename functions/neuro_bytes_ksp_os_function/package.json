@@ -1,0 +1,9 @@
+{
+	"name": "neuro_bytes_ksp_os_function",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "chandanakt1712@gmail.com",
+	"dependencies": {
+		"zcatalyst-sdk-node": "latest"
+	}
+}
