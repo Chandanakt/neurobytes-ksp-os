@@ -1,55 +1,59 @@
-import { Card, CardContent } from "../../components/ui/card";
+import DashboardLayout from "../../components/layout/DashboardLayout";
+
+import KPICard from "../../components/dashboard/KPICard";
+
+import TrendPanel from "../../components/dashboard/CrimeTrendPanel";
+
+import HotspotPanel from "../../components/dashboard/HotspotPanel";
+
+import AlertFeed from "../../components/dashboard/AlertFeed";
 
 export default function DashboardPage() {
-  const stats = [
-    {
-      title: "Total Crimes",
-      value: "125,432",
-    },
-    {
-      title: "Active Cases",
-      value: "8,214",
-    },
-    {
-      title: "Repeat Offenders",
-      value: "1,892",
-    },
-    {
-      title: "High Risk Alerts",
-      value: "24",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-[#071321] text-white p-8">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-[#D4AF37]">
-          NeuroBytes KSP OS
-        </h1>
+    <DashboardLayout>
+      <h1 className="text-4xl font-bold text-[#D4AF37]">
+        Command Center
+      </h1>
 
-        <p className="text-slate-400 mt-2">
-          Karnataka State Police Crime Intelligence Platform
-        </p>
+      <p className="text-slate-400 mt-2">
+        Real-time Crime Intelligence &
+        Investigation Support System
+      </p>
+
+      <div className="grid grid-cols-4 gap-4 mt-8">
+        <KPICard
+          title="Total FIRs"
+          value="125,432"
+          change="+12%"
+        />
+
+        <KPICard
+          title="Active Cases"
+          value="8,214"
+          change="+5%"
+        />
+
+        <KPICard
+          title="Solved Cases"
+          value="117,218"
+          change="+18%"
+        />
+
+        <KPICard
+          title="Critical Alerts"
+          value="24"
+          change="-3%"
+          positive={false}
+        />
       </div>
 
-      <div className="grid grid-cols-4 gap-6">
-        {stats.map((item) => (
-          <Card
-            key={item.title}
-            className="bg-slate-900 border-slate-800"
-          >
-            <CardContent className="p-6">
-              <p className="text-slate-400 text-sm">
-                {item.title}
-              </p>
+      <div className="grid grid-cols-3 gap-6 mt-8">
+        <TrendPanel />
 
-              <h2 className="text-3xl font-bold mt-3">
-                {item.value}
-              </h2>
-            </CardContent>
-          </Card>
-        ))}
+        <HotspotPanel />
+
+        <AlertFeed />
       </div>
-    </div>
+    </DashboardLayout>
   );
 }
