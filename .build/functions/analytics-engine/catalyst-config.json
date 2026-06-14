@@ -1,0 +1,11 @@
+{
+	"deployment": {
+		"name": "analytics-engine",
+		"stack": "node22",
+		"type": "basicio",
+		"env_variables": {}
+	},
+	"execution": {
+		"main": "index.js"
+	}
+}

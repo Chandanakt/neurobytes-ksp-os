@@ -10,13 +10,15 @@ export default function DashboardLayout({
   children,
 }: Props) {
   return (
-    <div className="flex bg-[#071321] text-white">
+    <div className="flex min-h-screen bg-[#071321] text-white">
       <AppSidebar />
 
-      <div className="flex-1">
+      <div className="flex-1 flex flex-col">
         <TopNavbar />
 
-        <main className="p-8">{children}</main>
+        <main className="flex-1 p-8 overflow-auto">
+          {children}
+        </main>
       </div>
     </div>
   );

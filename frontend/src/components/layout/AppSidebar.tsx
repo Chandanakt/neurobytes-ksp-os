@@ -4,7 +4,6 @@ import {
   FileText,
   Network,
   BarChart3,
-  Settings,
 } from "lucide-react";
 
 import { Link, useLocation } from "react-router-dom";

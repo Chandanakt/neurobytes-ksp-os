@@ -1,7 +1,7 @@
 import DashboardLayout from "../../components/layout/DashboardLayout";
-import FIRUploadCard from "@/components/fir/FIRUploadCard";
-import FIRAnalysisPanel from "@/components/fir/FIRAnalysisPanel";
-import InvestigationPanel from "@/components/fir/InvestigationPanel";
+import FIRUploadCard from "../../components/fir/FIRUploadCard";
+import FIRAnalysisPanel from "../../components/fir/FIRAnalysisPanel";
+import InvestigationPanel from "../../components/fir/InvestigationPanel";
 
 export default function FIRPage() {
   return (

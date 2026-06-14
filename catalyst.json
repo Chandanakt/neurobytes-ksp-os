@@ -1,13 +1,17 @@
 {
   "functions": {
     "targets": [
-      "neuro_bytes_ksp_os_function"
+      "crime-search",
+      "analytics-engine",
+      "network-analysis",
+      "report-generator",
+      "fir-processor",
+      "ocr-engine"
     ],
     "ignore": [],
     "source": "functions"
   },
   "client": {
-    "source": "frontend",
-    "plugin": "zcatalyst-cli-plugin-react"
+    "source": "neurobytes-ksp-os-client"
   }
 }
