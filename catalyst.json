@@ -6,12 +6,13 @@
       "network-analysis",
       "report-generator",
       "fir-processor",
-      "ocr-engine"
+      "ocr-engine",
+      "evidence-vault"
     ],
     "ignore": [],
     "source": "functions"
   },
   "client": {
-    "source": "neurobytes-ksp-os-client"
+    "source": "frontend"
   }
 }

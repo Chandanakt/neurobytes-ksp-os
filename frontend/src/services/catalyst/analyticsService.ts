@@ -19,7 +19,7 @@ const ANALYTICS_URL = "/server/analytics-engine/execute";
 export async function getAnalytics(): Promise<AnalyticsResponse> {
   try {
     const response = await fetch(
-      "/server/analytics-engine/execute"
+      ANALYTICS_URL
     );
 
     if (!response.ok) {

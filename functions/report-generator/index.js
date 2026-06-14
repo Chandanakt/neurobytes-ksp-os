@@ -6,29 +6,19 @@
 
 module.exports = (context, basicIO) => {
 
-    const report = {
+    const reportData = {
 
         success: true,
 
         reportId: "KSP-CID-2026-001",
 
-        classification: "CONFIDENTIAL",
-
         district: "Mysuru",
 
-        generatedAt: new Date(),
+        crimeType: "Theft",
 
-        reportType:
-            "Crime Intelligence Dossier",
+        location: "Mysuru South",
 
-        executiveSummary:
-  "Recurring theft network detected in Mysuru South.",
-
-        incidentDetails: {
-            crimeType: "Theft",
-            location: "Mysuru South",
-            dateRange: "Last 30 Days"
-        },
+        riskScore: 84,
 
         suspects: [
             {
@@ -41,7 +31,7 @@ module.exports = (context, basicIO) => {
             }
         ],
 
-        associatedVehicles: [
+        vehicles: [
             "KA09AB1234",
             "KA09CD5678"
         ],
@@ -50,26 +40,11 @@ module.exports = (context, basicIO) => {
             "Mysuru South",
             "Nazarbad",
             "Lashkar Mohalla"
-        ],
-
-        networkFindings: [
-  "Shared vehicle usage.",
-  "Repeat offender links."
-],
-
-        riskAssessment: {
-            score: 84,
-            level: "HIGH"
-        },
-
-        recommendations: [
-  "Initiate surveillance.",
-  "Track vehicle movement."
-]
+        ]
     };
 
     basicIO.write(
-        JSON.stringify(report)
+        JSON.stringify(reportData)
     );
 
     context.close();

@@ -2,7 +2,8 @@ import DashboardLayout from "../../components/layout/DashboardLayout";
 import FIRUploadCard from "../../components/fir/FIRUploadCard";
 import FIRAnalysisPanel from "../../components/fir/FIRAnalysisPanel";
 import InvestigationPanel from "../../components/fir/InvestigationPanel";
-
+import EvidenceVault
+from "../../components/fir/EvidenceVault";
 export default function FIRPage() {
   return (
     <DashboardLayout>
@@ -16,6 +17,7 @@ export default function FIRPage() {
 
       <div className="grid grid-cols-3 gap-6 mt-8">
         <FIRUploadCard />
+        <EvidenceVault />
         <FIRAnalysisPanel />
         <InvestigationPanel />
       </div>

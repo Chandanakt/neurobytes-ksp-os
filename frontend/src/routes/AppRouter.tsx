@@ -2,39 +2,30 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Navigate,
 } from "react-router-dom";
 
-import DashboardPage
-from "../pages/Dashboard/DashboardPage";
+import DashboardPage from "../pages/Dashboard/DashboardPage";
+import CopilotPage from "../pages/Copilot/CopilotPage";
+import FIRPage from "../pages/FIR/FIRPage";
+import NetworkPage from "../pages/Network/NetworkPage";
+import ReportsPage from "../pages/Reports/ReportsPage";
+import LoginPage from "../pages/Login/LoginPage";
 
-import CopilotPage
-from "../pages/Copilot/CopilotPage";
-
-import FIRPage
-from "../pages/FIR/FIRPage";
-
-import NetworkPage
-from "../pages/Network/NetworkPage";
-
-import ReportsPage
-from "../pages/Reports/ReportsPage";
-
-import LoginPage
-from "../pages/Login/LoginPage";
-
-import ProtectedRoute
-from "./ProtectedRoute";
+import ProtectedRoute from "./ProtectedRoute";
 
 export default function AppRouter() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/app">
       <Routes>
 
+        {/* Login */}
         <Route
           path="/login"
           element={<LoginPage />}
         />
 
+        {/* Dashboard */}
         <Route
           path="/"
           element={
@@ -44,6 +35,7 @@ export default function AppRouter() {
           }
         />
 
+        {/* AI Copilot */}
         <Route
           path="/copilot"
           element={
@@ -53,6 +45,7 @@ export default function AppRouter() {
           }
         />
 
+        {/* FIR Intelligence */}
         <Route
           path="/fir"
           element={
@@ -62,6 +55,7 @@ export default function AppRouter() {
           }
         />
 
+        {/* Criminal Network Analysis */}
         <Route
           path="/network"
           element={
@@ -71,6 +65,7 @@ export default function AppRouter() {
           }
         />
 
+        {/* Intelligence Reports */}
         <Route
           path="/reports"
           element={
@@ -78,6 +73,12 @@ export default function AppRouter() {
               <ReportsPage />
             </ProtectedRoute>
           }
+        />
+
+        {/* Fallback */}
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />}
         />
 
       </Routes>

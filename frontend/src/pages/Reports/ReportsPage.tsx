@@ -9,6 +9,30 @@ import { useReport } from "../../hooks/useReport";
 export default function ReportsPage() {
   const { data, loading } = useReport();
 
+  const executiveSummary =
+    data
+      ? `Analysis of recent FIR intelligence indicates recurring ${data.crimeType.toLowerCase()} activity in ${data.location}. Multiple suspects have been linked through common operational patterns and vehicle associations. Immediate monitoring is recommended.`
+      : "";
+
+  const networkFindings =
+    data
+      ? [
+          `Vehicle ${data.vehicles[0]} appears across multiple investigations.`,
+          `${data.suspects.length} suspects linked to the crime cluster.`,
+          `${data.hotspots.length} hotspot zones identified.`,
+        ]
+      : [];
+
+  const recommendations =
+    data
+      ? [
+          "Initiate surveillance on identified suspects.",
+          "Track associated vehicle movement.",
+          "Expand intelligence gathering in hotspot regions.",
+          "Coordinate with district investigation units.",
+        ]
+      : [];
+
   if (loading) {
     return (
       <DashboardLayout>
@@ -43,8 +67,16 @@ export default function ReportsPage() {
               KARNATAKA STATE POLICE
             </h2>
 
-            <h3 className="text-xl mt-2">
-              {data?.reportType}
+            <div className="mt-2 text-slate-400">
+              Criminal Investigation Department (CID)
+            </div>
+
+            <div className="mt-1 text-red-400 font-semibold">
+              CONFIDENTIAL
+            </div>
+
+            <h3 className="text-xl mt-4">
+              Crime Intelligence Dossier
             </h3>
 
             <div className="grid md:grid-cols-4 gap-4 mt-6">
@@ -59,16 +91,6 @@ export default function ReportsPage() {
 
               <div>
                 <p className="text-slate-400 text-sm">
-                  Classification
-                </p>
-
-                <p className="text-red-400">
-                  {data?.classification}
-                </p>
-              </div>
-
-              <div>
-                <p className="text-slate-400 text-sm">
                   District
                 </p>
 
@@ -77,11 +99,19 @@ export default function ReportsPage() {
 
               <div>
                 <p className="text-slate-400 text-sm">
-                  Risk Level
+                  Crime Type
+                </p>
+
+                <p>{data?.crimeType}</p>
+              </div>
+
+              <div>
+                <p className="text-slate-400 text-sm">
+                  Risk Score
                 </p>
 
                 <p className="text-red-400">
-                  {data?.riskAssessment.level}
+                  {data?.riskScore}
                 </p>
               </div>
 
@@ -97,7 +127,7 @@ export default function ReportsPage() {
             </h3>
 
             <p className="mt-3 text-slate-300">
-              {data?.executiveSummary}
+              {executiveSummary}
             </p>
           </section>
 
@@ -108,33 +138,26 @@ export default function ReportsPage() {
               Incident Details
             </h3>
 
-            <div className="grid md:grid-cols-3 gap-4 mt-4">
+            <div className="grid md:grid-cols-2 gap-4 mt-4">
 
               <div className="bg-slate-800 p-4 rounded-lg">
                 Crime Type
                 <div className="font-bold mt-2">
-                  {data?.incidentDetails.crimeType}
+                  {data?.crimeType}
                 </div>
               </div>
 
               <div className="bg-slate-800 p-4 rounded-lg">
                 Location
                 <div className="font-bold mt-2">
-                  {data?.incidentDetails.location}
-                </div>
-              </div>
-
-              <div className="bg-slate-800 p-4 rounded-lg">
-                Time Range
-                <div className="font-bold mt-2">
-                  {data?.incidentDetails.dateRange}
+                  {data?.location}
                 </div>
               </div>
 
             </div>
           </section>
 
-          {/* Suspects */}
+          {/* Suspect Intelligence */}
 
           <section className="mt-8">
             <h3 className="text-xl font-semibold text-[#D4AF37]">
@@ -143,7 +166,7 @@ export default function ReportsPage() {
 
             <div className="grid md:grid-cols-2 gap-4 mt-4">
 
-              {data?.suspects.map((suspect) => (
+              {data?.suspects?.map((suspect) => (
                 <div
                   key={suspect.name}
                   className="bg-slate-800 rounded-lg p-4"
@@ -161,7 +184,7 @@ export default function ReportsPage() {
             </div>
           </section>
 
-          {/* Vehicles */}
+          {/* Vehicle Intelligence */}
 
           <section className="mt-8">
             <h3 className="text-xl font-semibold text-[#D4AF37]">
@@ -170,21 +193,19 @@ export default function ReportsPage() {
 
             <div className="space-y-2 mt-4">
 
-              {data?.associatedVehicles.map(
-                (vehicle) => (
-                  <div
-                    key={vehicle}
-                    className="bg-slate-800 rounded-lg p-3"
-                  >
-                    {vehicle}
-                  </div>
-                )
-              )}
+              {data?.vehicles?.map((vehicle) => (
+                <div
+                  key={vehicle}
+                  className="bg-slate-800 rounded-lg p-3"
+                >
+                  {vehicle}
+                </div>
+              ))}
 
             </div>
           </section>
 
-          {/* Network Findings */}
+          {/* Criminal Network Findings */}
 
           <section className="mt-8">
             <h3 className="text-xl font-semibold text-[#D4AF37]">
@@ -193,21 +214,19 @@ export default function ReportsPage() {
 
             <div className="space-y-2 mt-4">
 
-              {data?.networkFindings.map(
-                (finding) => (
-                  <div
-                    key={finding}
-                    className="bg-slate-800 rounded-lg p-3"
-                  >
-                    • {finding}
-                  </div>
-                )
-              )}
+              {networkFindings.map((finding) => (
+                <div
+                  key={finding}
+                  className="bg-slate-800 rounded-lg p-3"
+                >
+                  • {finding}
+                </div>
+              ))}
 
             </div>
           </section>
 
-          {/* Hotspots */}
+          {/* Crime Hotspots */}
 
           <section className="mt-8">
             <h3 className="text-xl font-semibold text-[#D4AF37]">
@@ -216,59 +235,57 @@ export default function ReportsPage() {
 
             <div className="flex flex-wrap gap-3 mt-4">
 
-              {data?.hotspots.map(
-                (hotspot) => (
-                  <span
-                    key={hotspot}
-                    className="bg-red-500/10 border border-red-500/30 px-4 py-2 rounded-lg"
-                  >
-                    {hotspot}
-                  </span>
-                )
-              )}
+              {data?.hotspots?.map((hotspot) => (
+                <span
+                  key={hotspot}
+                  className="bg-red-500/10 border border-red-500/30 px-4 py-2 rounded-lg"
+                >
+                  {hotspot}
+                </span>
+              ))}
 
             </div>
           </section>
 
-          {/* Risk */}
+          {/* Risk Assessment */}
 
           <section className="mt-8 bg-red-500/10 border border-red-500/20 rounded-xl p-5">
+
             <h3 className="text-xl font-semibold text-red-400">
               Risk Assessment
             </h3>
 
-            <p className="mt-2 text-2xl font-bold">
-              Score: {data?.riskAssessment.score}
+            <p className="mt-2 text-3xl font-bold">
+              {data?.riskScore}
             </p>
 
             <p className="text-red-400">
-              Threat Level:
-              {" "}
-              {data?.riskAssessment.level}
+              HIGH RISK ACTIVITY DETECTED
             </p>
+
           </section>
 
           {/* Recommendations */}
 
           <section className="mt-8">
+
             <h3 className="text-xl font-semibold text-[#D4AF37]">
               Recommended Actions
             </h3>
 
             <div className="space-y-2 mt-4">
 
-              {data?.recommendations.map(
-                (item) => (
-                  <div
-                    key={item}
-                    className="bg-slate-800 rounded-lg p-3"
-                  >
-                    • {item}
-                  </div>
-                )
-              )}
+              {recommendations.map((item) => (
+                <div
+                  key={item}
+                  className="bg-slate-800 rounded-lg p-3"
+                >
+                  • {item}
+                </div>
+              ))}
 
             </div>
+
           </section>
 
         </div>

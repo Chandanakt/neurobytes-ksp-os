@@ -10,12 +10,18 @@ export default function LoginPage() {
   const { login } = useAuth();
 
   const handleLogin = () => {
-    if (!email) return;
+  if (
+    !email ||
+    !email.includes("@")
+  ) {
+    alert("Enter a valid email");
+    return;
+  }
 
-    login(email);
+  login(email);
 
-    navigate("/");
-  };
+  navigate("/");
+};
 
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center">
