@@ -26,7 +26,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center">
 
-      <div className="bg-slate-900 p-8 rounded-xl w-[400px]">
+      <div className="bg-slate-900 p-6 md:p-8 rounded-xl w-full max-w-md mx-4">
 
         <h1 className="text-3xl font-bold text-[#D4AF37]">
           NeuroBytes KSP OS

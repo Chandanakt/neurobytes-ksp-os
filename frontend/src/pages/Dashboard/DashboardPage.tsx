@@ -24,7 +24,7 @@ export default function DashboardPage() {
 
   return (
     <DashboardLayout>
-      <h1 className="text-4xl font-bold text-[#D4AF37]">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#D4AF37]">
         Command Center
       </h1>
 

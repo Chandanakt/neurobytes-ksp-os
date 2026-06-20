@@ -65,11 +65,11 @@ export default function CopilotPage() {
 
   return (
     <DashboardLayout>
-      <div className="max-w-7xl mx-auto space-y-6">
+      <div className="max-w-7xl mx-auto px-2 md:px-0 space-y-6">
 
         {/* Header */}
         <div>
-          <h1 className="text-4xl font-bold text-[#D4AF37]">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#D4AF37]">
             AI Crime Intelligence Copilot
           </h1>
 

@@ -16,7 +16,7 @@ import ProtectedRoute from "./ProtectedRoute";
 
 export default function AppRouter() {
   return (
-    <BrowserRouter basename="/app">
+    <BrowserRouter basename="/">
       <Routes>
 
         {/* Login */}

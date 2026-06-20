@@ -15,7 +15,7 @@ export default function FIRPage() {
         Upload FIRs and receive AI-powered investigation support.
       </p>
 
-      <div className="grid grid-cols-3 gap-6 mt-8">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-8">
         <FIRUploadCard />
         <EvidenceVault />
         <FIRAnalysisPanel />
